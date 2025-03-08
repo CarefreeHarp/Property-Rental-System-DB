@@ -9,12 +9,21 @@ CREATE TABLE DEUDOR (
     CONSTRAINT llaves_naturales_deudor UNIQUE (tipo_doc , numero_doc)
 );
 
+CREATE TABLE BANCO(
+    id NUMBER(10,0) GENERATED ALWAYS AS IDENTITY,
+    nombre VARCHAR2(20) NOT NULL,
+
+    PRIMARY KEY (id),
+    
+    CONSTRAINT llave_natural_banco UNIQUE(nombre)
+);
+
 CREATE TABLE PRESTAMO(
     id NUMBER(10,0) GENERATED ALWAYS AS IDENTITY,
     iddeudor NUMBER(10,0) NOT NULL,
     idbanco NUMBER(10,0) NOT NULL,                                     
     fecha DATE DEFAULT SYSDATE NOT NULL,
-    valor_otorgado NUMBER(11,4) DEFAULT 0 NOT NULL CHECK(valor_otorgado >= 0),
+    valor_otorgado NUMBER(14,4) DEFAULT 0 NOT NULL CHECK(valor_otorgado >= 0),
     pagado CHAR(2) DEFAULT 'NO' NOT NULL CHECK (pagado IN ('SI','NO')),
 
     PRIMARY KEY (id),
@@ -28,15 +37,10 @@ CREATE TABLE ABONO(
     id NUMBER(10,0) GENERATED ALWAYS AS IDENTITY,
     idprestamo NUMBER(10,0) NOT NULL,
     fecha DATE DEFAULT SYSDATE NOT NULL,
-    valor_abono NUMBER(11,4) NOT NULL CHECK(valor_abono >= 0),
+    valor_abono NUMBER(14,4) NOT NULL CHECK(valor_abono >= 0),
+
     PRIMARY KEY(id),
     FOREIGN KEY(idprestamo) REFERENCES PRESTAMO(id),
-    CONSTRAINT llaves_naturales_abono UNIQUE(idprestamo, fecha)
-);
 
-CREATE TABLE BANCO(
-    id NUMBER(10,0) GENERATED ALWAYS AS IDENTITY,
-    nombre VARCHAR2(20) NOT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT llave_natural_banco UNIQUE(nombre)
+    CONSTRAINT llaves_naturales_abono UNIQUE(idprestamo, fecha)
 );

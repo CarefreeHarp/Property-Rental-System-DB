@@ -1,0 +1,21 @@
+Commit "Script de Insercion & Primeras Consultas":
+
+Se creó un archivo para registrar cambios "Cambios_del_commit.txt"
+
+Carpeta Scripts entregables:
+- Se terminó el script de tablas y está listo para ejecutar
+- Script de inserción de datos listo para ejecutar:
+	- 10 Bancos
+	- 11 Deudores (10 con abonos registrados, 1 sin abonos)
+	- 220 Préstamos
+	- 200 Abonos (Cada deudor paga más o menos (múltiplos de 10)% de su deuda)
+- Se añadió un script donde se pueden ir guardando las consultas del proyecto:
+	- Consulta 1 terminada
+	- Consulta 2 terminada
+
+Carpeta Scripts para consultar información:
+- Son scripts que no se piden en el proyecto pero nos permiten conocer el estado de los datos en las tablas
+
+
+
+

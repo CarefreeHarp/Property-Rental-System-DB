@@ -1,0 +1,10 @@
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '61702456');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '45901354');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '64383360');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '56573307');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '51336603');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '54043170');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '10759991');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '37694513');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '80525233');
+select * from prestamo where iddeudor = (select id from deudor where numero_doc = '82393615');
