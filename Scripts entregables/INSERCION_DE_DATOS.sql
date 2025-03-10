@@ -463,5 +463,4 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (169, TO_DATE('2024-10
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (192, TO_DATE('2024-10-15', 'YYYY-MM-DD'), 3000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (157, TO_DATE('2024-09-19', 'YYYY-MM-DD'), 7000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (80, TO_DATE('2024-10-07', 'YYYY-MM-DD'), 6000000);
-update abono set valor_abono = valor_abono*10;
 COMMIT;

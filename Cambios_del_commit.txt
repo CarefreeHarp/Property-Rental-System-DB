@@ -18,4 +18,13 @@ Carpeta Scripts para consultar información:
 
 
 
+Commit "Arreglo inserción de datos & consulta 3"
+
+Carpeta Scripts Entregables:
+- Se arregló la inserción de datos (recomendado volver a insertarlos desde 0):
+	- Los abonos ya no representan ningún porcentaje en especifico de la deuda de cada deudor
+- Se arregló el group by de la consulta 3 para que pudiera mostrar la información de los 220 prestamos
+
+
+
 
