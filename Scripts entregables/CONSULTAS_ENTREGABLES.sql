@@ -18,3 +18,13 @@ on prestamo.idbanco = banco.id --Revisar resultado #139 "Banco Sin Plata"
           extract(month from prestamo.fecha)
 order by nombre_banco asc, anio asc , mes asc;
 
+/*CONSULTA 3*/
+SELECT  numero_doc NOMBRE_DEUDOR,
+        valor_otorgado,
+        NVL(SUM(valor_abono), 0) VALOR_ABONADO,-- NVL es una funcion que me sirve de que en caso de que el prestamo no tenga ningun abono el valor sea 0 en vez de nulo
+        valor_otorgado - NVL(SUM(valor_abono), 0) SALDO
+FROM deudor d
+JOIN prestamo p ON d.id = p.iddeudor
+LEFT JOIN abono a ON p.id = a.idprestamo
+GROUP BY numero_doc, valor_otorgado;
+        
