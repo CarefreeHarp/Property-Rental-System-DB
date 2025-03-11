@@ -30,6 +30,8 @@ INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('PP', '37694513', 'F')
 INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CC', '80525233', 'M');
 INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('PP', '82393615', 'M');
 INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CC', '11111111', 'M'); --Deudor que no ha pagado ninguna deuda
+INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CC', '33333333', 'M'); --Deudor con 0 prestamos
+
 -- INSERCION DE PRESTAMOS
 INSERT INTO PRESTAMO (iddeudor, idbanco, fecha, valor_otorgado, pagado) VALUES (9, 3, TO_DATE('2023-01-25', 'YYYY-MM-DD'), 300000000, 'NO');
 INSERT INTO PRESTAMO (iddeudor, idbanco, fecha, valor_otorgado, pagado) VALUES (4, 1, TO_DATE('2022-12-21', 'YYYY-MM-DD'), 100000000, 'NO');
@@ -463,4 +465,5 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (169, TO_DATE('2024-10
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (192, TO_DATE('2024-10-15', 'YYYY-MM-DD'), 3000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (157, TO_DATE('2024-09-19', 'YYYY-MM-DD'), 7000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (80, TO_DATE('2024-10-07', 'YYYY-MM-DD'), 6000000);
+
 COMMIT;

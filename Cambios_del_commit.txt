@@ -25,6 +25,10 @@ Carpeta Scripts Entregables:
 	- Los abonos ya no representan ningún porcentaje en especifico de la deuda de cada deudor
 - Se arregló el group by de la consulta 3 para que pudiera mostrar la información de los 220 prestamos
 
+Commit "Consultas Terminados"
+- Se arregló la inserción de datos
+- Se juntaron las 10 consultas en un archivo
+
 
 
 
