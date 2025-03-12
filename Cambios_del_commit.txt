@@ -29,6 +29,14 @@ Commit "Consultas Terminados"
 - Se arregló la inserción de datos
 - Se juntaron las 10 consultas en un archivo
 
+Commit "Pre-release"
+
+Carpeta Scripts Entregables: 
+-Los 4 scripts entregables están listos para ejecución en el usuario de cada integrante del grupo 
+-La consulta 9 sigue en proceso de revisión ya que no se puede establecer como una vista 
+
+
+
 
 
 

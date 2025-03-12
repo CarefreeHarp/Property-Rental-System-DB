@@ -17,20 +17,19 @@ INSERT INTO BANCO (nombre) VALUES ('Banco Bancolombia');
 INSERT INTO BANCO (nombre) VALUES ('Banco ITAU');
 INSERT INTO BANCO (nombre) VALUES ('Banco Scotiabank');
 INSERT INTO BANCO (nombre) VALUES ('Banco Pichincha');
-INSERT INTO BANCO (nombre) VALUES ('Banco Sin Plata'); --Banco que no presta nada
--- INSERCION DE DEUDORES
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CE', '61702456', 'F');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CC', '45901354', 'F');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('TI', '64383360', 'M');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CE', '56573307', 'F');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('PP', '51336603', 'F');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('TI', '54043170', 'M');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CE', '10759991', 'M');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('PP', '37694513', 'F');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CC', '80525233', 'M');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('PP', '82393615', 'M');
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CC', '11111111', 'M'); --Deudor que no ha pagado ninguna deuda
-INSERT INTO DEUDOR (tipo_doc, numero_doc, genero) VALUES ('CC', '33333333', 'M'); --Deudor con 0 prestamos
+
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('CE', '61702456','Carla Ramirez', 'F');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('CC', '45901354', 'Susana Oria', 'F');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('TI', '64383360','Esteban Quito', 'M');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('CE', '56573307','Elsa Pato', 'F');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('PP', '51336603','Daniela Rojas', 'F');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('TI', '54043170','Armando Paredes', 'M');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('CE', '10759991','Pepe Roni', 'M');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('PP', '37694513','Susana Distancia', 'F');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('CC', '80525233','Juan Gutierrez', 'M');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('PP', '82393615','Roberto Tuercas', 'M');
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('CC', '11111111','Casimiro Ahorros', 'M'); --Deudor que no ha pagado ninguna deuda
+INSERT INTO DEUDOR (tipo_doc, numero_doc, nombre, genero) VALUES ('CC', '33333333','Elmer Curio', 'M'); --Deudor con 0 prestamos
 
 -- INSERCION DE PRESTAMOS
 INSERT INTO PRESTAMO (iddeudor, idbanco, fecha, valor_otorgado, pagado) VALUES (9, 3, TO_DATE('2023-01-25', 'YYYY-MM-DD'), 300000000, 'NO');
@@ -255,13 +254,13 @@ INSERT INTO PRESTAMO (iddeudor, idbanco, fecha, valor_otorgado, pagado) VALUES (
 INSERT INTO PRESTAMO (iddeudor, idbanco, fecha, valor_otorgado, pagado) VALUES (11, 5, TO_DATE('2024-10-25', 'YYYY-MM-DD'), 200000000, 'NO');
 INSERT INTO PRESTAMO (iddeudor, idbanco, fecha, valor_otorgado, pagado) VALUES (11, 5, TO_DATE('2025-01-09', 'YYYY-MM-DD'), 100000000, 'NO');
 -- INSERCION DE ABONOS
---Abonos para el deudor con numero 61702456 (paga el 100% de sus deudas)
+--Abonos para el deudor con numero 61702456 )
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (91, TO_DATE('2024-01-16', 'YYYY-MM-DD'), 30000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (191, TO_DATE('2024-02-07', 'YYYY-MM-DD'), 80000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (118, TO_DATE('2024-02-23', 'YYYY-MM-DD'), 30000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (12, TO_DATE('2024-02-25', 'YYYY-MM-DD'), 20000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (144, TO_DATE('2024-01-24', 'YYYY-MM-DD'), 50000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (94, TO_DATE('2024-02-12', 'YYYY-MM-DD'), 10000000);
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (94, TO_DATE('2024-02-12', 'YYYY-MM-DD'), 100000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (135, TO_DATE('2024-01-16', 'YYYY-MM-DD'), 30000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (117, TO_DATE('2024-02-19', 'YYYY-MM-DD'), 30000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (168, TO_DATE('2024-02-04', 'YYYY-MM-DD'), 30000000);
@@ -275,13 +274,13 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (114, TO_DATE('2024-01
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (195, TO_DATE('2024-01-24', 'YYYY-MM-DD'), 80000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (115, TO_DATE('2024-02-19', 'YYYY-MM-DD'), 90000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (153, TO_DATE('2024-01-22', 'YYYY-MM-DD'), 80000000);
---Abonos para el deudor con numero 45901354 (paga el 90% de su deuda total)
+--Abonos para el deudor con numero 45901354 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (198, TO_DATE('2024-03-20', 'YYYY-MM-DD'), 36000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (57, TO_DATE('2024-03-25', 'YYYY-MM-DD'), 36000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (128, TO_DATE('2024-04-06', 'YYYY-MM-DD'), 9000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (48, TO_DATE('2024-03-16', 'YYYY-MM-DD'), 18000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (30, TO_DATE('2024-03-04', 'YYYY-MM-DD'), 72000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (3, TO_DATE('2024-03-16', 'YYYY-MM-DD'), 54000000);
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (3, TO_DATE('2024-03-16', 'YYYY-MM-DD'), 600000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (183, TO_DATE('2024-04-22', 'YYYY-MM-DD'), 72000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (194, TO_DATE('2024-04-23', 'YYYY-MM-DD'), 27000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (141, TO_DATE('2024-03-21', 'YYYY-MM-DD'), 9000000);
@@ -296,7 +295,7 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (14, TO_DATE('2024-04-
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (180, TO_DATE('2024-03-17', 'YYYY-MM-DD'), 72000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (148, TO_DATE('2024-04-07', 'YYYY-MM-DD'), 81000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (166, TO_DATE('2024-03-30', 'YYYY-MM-DD'), 72000000);
---Abonos para el deudor con numero 64383360 (paga el 80% de su deuda total)
+--Abonos para el deudor con numero 64383360 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (137, TO_DATE('2024-04-12', 'YYYY-MM-DD'), 48000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (102, TO_DATE('2024-04-29', 'YYYY-MM-DD'), 40000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (154, TO_DATE('2024-05-21', 'YYYY-MM-DD'), 40000000);
@@ -305,7 +304,7 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (25, TO_DATE('2024-05-
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (27, TO_DATE('2024-05-29', 'YYYY-MM-DD'), 8000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (155, TO_DATE('2024-05-29', 'YYYY-MM-DD'), 32000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (186, TO_DATE('2024-05-11', 'YYYY-MM-DD'), 16000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (200, TO_DATE('2024-05-03', 'YYYY-MM-DD'), 56000000);
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (200, TO_DATE('2024-05-03', 'YYYY-MM-DD'), 700000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (93, TO_DATE('2024-04-19', 'YYYY-MM-DD'), 64000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (150, TO_DATE('2024-05-03', 'YYYY-MM-DD'), 48000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (76, TO_DATE('2024-04-06', 'YYYY-MM-DD'), 32000000);
@@ -315,7 +314,7 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (18, TO_DATE('2024-05-
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (107, TO_DATE('2024-04-19', 'YYYY-MM-DD'), 72000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (32, TO_DATE('2024-04-20', 'YYYY-MM-DD'), 48000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (41, TO_DATE('2024-04-09', 'YYYY-MM-DD'), 80000000);
---Abonos para el deudor con numero 56573307 (paga el 70% de su deuda total)
+--Abonos para el deudor con numero 56573307 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (65, TO_DATE('2024-06-02', 'YYYY-MM-DD'), 21000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (188, TO_DATE('2024-05-13', 'YYYY-MM-DD'), 70000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (2, TO_DATE('2024-05-02', 'YYYY-MM-DD'), 63000000);
@@ -339,13 +338,13 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (97, TO_DATE('2024-05-
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (67, TO_DATE('2024-05-04', 'YYYY-MM-DD'), 49000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (29, TO_DATE('2024-06-02', 'YYYY-MM-DD'), 49000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (105, TO_DATE('2024-05-06', 'YYYY-MM-DD'), 35000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (103, TO_DATE('2024-06-05', 'YYYY-MM-DD'), 49000000);
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (103, TO_DATE('2024-06-05', 'YYYY-MM-DD'), 700000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (88, TO_DATE('2024-06-10', 'YYYY-MM-DD'), 63000000);
---Abonos para el deudor con numero 51336603 (paga el 60% de su deuda total)
+--Abonos para el deudor con numero 51336603 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (172, TO_DATE('2024-06-07', 'YYYY-MM-DD'), 12000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (70, TO_DATE('2024-06-27', 'YYYY-MM-DD'), 30000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (50, TO_DATE('2024-07-17', 'YYYY-MM-DD'), 54000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (4, TO_DATE('2024-06-07', 'YYYY-MM-DD'), 60000000);
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (4, TO_DATE('2024-06-07', 'YYYY-MM-DD'), 100000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (79, TO_DATE('2024-06-26', 'YYYY-MM-DD'), 36000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (44, TO_DATE('2024-07-11', 'YYYY-MM-DD'), 54000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (26, TO_DATE('2024-06-07', 'YYYY-MM-DD'), 36000000);
@@ -357,11 +356,11 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (130, TO_DATE('2024-07
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (120, TO_DATE('2024-06-04', 'YYYY-MM-DD'), 60000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (98, TO_DATE('2024-06-18', 'YYYY-MM-DD'), 42000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (171, TO_DATE('2024-07-25', 'YYYY-MM-DD'), 48000000);
---Abonos para el deudor con numero 54043170 (paga el 50% de su deuda total)
+--Abonos para el deudor con numero 54043170 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (189, TO_DATE('2024-08-28', 'YYYY-MM-DD'), 20000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (139, TO_DATE('2024-07-10', 'YYYY-MM-DD'), 45000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (184, TO_DATE('2024-07-21', 'YYYY-MM-DD'), 45000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (60, TO_DATE('2024-07-15', 'YYYY-MM-DD'), 35000000);
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (60, TO_DATE('2024-07-15', 'YYYY-MM-DD'), 700000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (56, TO_DATE('2024-07-02', 'YYYY-MM-DD'), 30000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (90, TO_DATE('2024-08-30', 'YYYY-MM-DD'), 35000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (199, TO_DATE('2024-07-31', 'YYYY-MM-DD'), 30000000);
@@ -378,12 +377,12 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (36, TO_DATE('2024-07-
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (34, TO_DATE('2024-07-22', 'YYYY-MM-DD'), 20000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (193, TO_DATE('2024-08-02', 'YYYY-MM-DD'), 30000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (59, TO_DATE('2024-07-05', 'YYYY-MM-DD'), 25000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (8, TO_DATE('2024-07-17', 'YYYY-MM-DD'), 45000000);
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (8, TO_DATE('2024-07-17', 'YYYY-MM-DD'), 600000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (167, TO_DATE('2024-08-13', 'YYYY-MM-DD'), 25000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (136, TO_DATE('2024-07-18', 'YYYY-MM-DD'), 40000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (6, TO_DATE('2024-07-24', 'YYYY-MM-DD'), 20000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (179, TO_DATE('2024-07-30', 'YYYY-MM-DD'), 25000000);
---Abonos para el deudor con numero 10759991 (paga el 40% de su deuda total)
+--Abonos para el deudor con numero 10759991 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (140, TO_DATE('2024-09-21', 'YYYY-MM-DD'), 16000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (162, TO_DATE('2024-08-21', 'YYYY-MM-DD'), 8000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (23, TO_DATE('2024-09-03', 'YYYY-MM-DD'), 28000000);
@@ -399,7 +398,7 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (127, TO_DATE('2024-08
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (37, TO_DATE('2024-09-06', 'YYYY-MM-DD'), 36000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (40, TO_DATE('2024-09-07', 'YYYY-MM-DD'), 16000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (178, TO_DATE('2024-08-04', 'YYYY-MM-DD'), 36000000);
---Abonos para el deudor con numero 37694513 (paga el 30% de su deuda total)
+--Abonos para el deudor con numero 37694513 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (33, TO_DATE('2024-10-01', 'YYYY-MM-DD'), 21000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (19, TO_DATE('2024-09-08', 'YYYY-MM-DD'), 6000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (196, TO_DATE('2024-10-28', 'YYYY-MM-DD'), 12000000);
@@ -416,12 +415,12 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (96, TO_DATE('2024-10-
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (55, TO_DATE('2024-10-02', 'YYYY-MM-DD'), 15000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (24, TO_DATE('2024-09-05', 'YYYY-MM-DD'), 24000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (17, TO_DATE('2024-09-23', 'YYYY-MM-DD'), 6000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (52, TO_DATE('2024-09-18', 'YYYY-MM-DD'), 27000000);
---Abonos para el deudor con numero 80525233 (paga el 20% de su deuda total)
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (52, TO_DATE('2024-09-18', 'YYYY-MM-DD'), 900000000);
+--Abonos para el deudor con numero 80525233 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (145, TO_DATE('2024-10-23', 'YYYY-MM-DD'), 20000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (134, TO_DATE('2024-09-22', 'YYYY-MM-DD'), 8000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (146, TO_DATE('2024-10-12', 'YYYY-MM-DD'), 20000000);
-INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (1, TO_DATE('2024-09-17', 'YYYY-MM-DD'), 6000000);
+INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (1, TO_DATE('2024-09-17', 'YYYY-MM-DD'), 300000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (125, TO_DATE('2024-10-16', 'YYYY-MM-DD'), 8000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (86, TO_DATE('2024-10-05', 'YYYY-MM-DD'), 6000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (87, TO_DATE('2024-10-10', 'YYYY-MM-DD'), 12000000);
@@ -439,7 +438,7 @@ INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (158, TO_DATE('2024-10
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (129, TO_DATE('2024-10-29', 'YYYY-MM-DD'), 6000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (53, TO_DATE('2024-09-11', 'YYYY-MM-DD'), 12000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (68, TO_DATE('2024-09-28', 'YYYY-MM-DD'), 20000000);
---Abonos para el deudor con numero 82393615 (paga el 10% de su deuda total)
+--Abonos para el deudor con numero 82393615 
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (31, TO_DATE('2024-10-23', 'YYYY-MM-DD'), 10000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (170, TO_DATE('2024-09-22', 'YYYY-MM-DD'), 5000000);
 INSERT INTO ABONO (idprestamo, fecha, valor_abono) VALUES (89, TO_DATE('2024-10-12', 'YYYY-MM-DD'), 2000000);

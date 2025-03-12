@@ -1,19 +1,21 @@
 /*CONSULTAS DEL PROYECTO*/
 
 /*CONSULTA 1*/
-select sum(valor_otorgado),
-       extract(year from fecha)
+create view VISTA_1 as
+select sum(valor_otorgado) Suma,
+       extract(year from fecha) anio
   from prestamo
  group by extract(year from fecha);
 
 /*CONSULTA 2*/
+create view VISTA_2 as
 select banco.nombre nombre_banco,
        extract(year from prestamo.fecha) anio,
        extract(month from prestamo.fecha) mes,
        sum(prestamo.valor_otorgado) suma_de_prestamos_otorgados
   from banco
   left join prestamo --En caso de existir un banco que no haya otorgado prestamos, de todas formas saldra como resultado y sus valores seran nulos
-on prestamo.idbanco = banco.id --Revisar resultado #139 "Banco Sin Plata"
+on prestamo.idbanco = banco.id
  group by banco.nombre,
           extract(year from prestamo.fecha),
           extract(month from prestamo.fecha)
@@ -22,7 +24,8 @@ on prestamo.idbanco = banco.id --Revisar resultado #139 "Banco Sin Plata"
           mes asc;
 
 /*CONSULTA 3*/
-select max(d.numero_doc) nombre_deudor, -- Se usa la funcion max para asignarle una funcion de agregacion ya que de lo contrario tocaria agregar el atributo del select al group by
+create view VISTA_3 as
+select max(d.nombre) nombre_deudor, -- Se usa la funcion max para asignarle una funcion de agregacion ya que de lo contrario tocaria agregar el atributo del select al group by
        max(p.valor_otorgado) valor_otorgado, -- Se usa la funcion max para asignarle una funcion de agregacion ya que de lo contrario tocaria agregar el atributo del select al group by
        nvl(
           sum(a.valor_abono),
@@ -43,7 +46,9 @@ on p.id = a.idprestamo
  order by p.id asc;
 
  /*CONSULTA 4*/
-select d.tipo_doc,
+create view VISTA_4 as
+select d.nombre nombre_deudor,
+       d.tipo_doc,
        d.numero_doc,
        b.nombre nombre_banco,
        p.fecha,
@@ -57,9 +62,9 @@ on p.idbanco = b.id
           d.numero_doc;
  
 /*CONSULTA 5*/
+create view VISTA_5 as
 select d.id,
-       d.tipo_doc,
-       d.numero_doc,
+       d.nombre,
        nvl(
           count(p.id),
           0
@@ -68,39 +73,41 @@ select d.id,
   left join prestamo p
 on d.id = p.iddeudor
  group by d.id,
-          d.tipo_doc,
-          d.numero_doc
+          d.nombre
  order by d.id;
 
  /*CONSULTA 6*/
-select to_char(extract(year from fecha)) año,
+create view VISTA_6 as
+select to_char(extract(year from fecha)) anio,
        sum(valor_otorgado) valor_total
   from prestamo
  group by extract(year from fecha)
 union all
-select 'Suma total' año,
+select 'Suma total' anio,
        sum(valor_otorgado) as suma_total
   from prestamo
- order by año;
+ order by anio;
  
  /*CONSULTA 7*/
+create view VISTA_7 as
 select deudor.id identificacion,
-       deudor.numero_doc numero_documento
+       deudor.nombre nombre
   from deudor
   join prestamo
 on deudor.id = prestamo.iddeudor
   join banco
 on prestamo.idbanco = banco.id
  group by deudor.id,
-          deudor.numero_doc
+          deudor.nombre
 having count(distinct banco.id) = (
    select count(*)
      from banco
 );
 
  /*CONSULTA 8*/
+create view VISTA_8 as
 select b.nombre as nombre_banco,
-       extract(year from p.fecha) as año,
+       extract(year from p.fecha) as anio,
        avg(p.valor_otorgado) as promedio_banco,
        (
           select avg(valor_otorgado)
@@ -119,9 +126,10 @@ having avg(p.valor_otorgado) > (
 );
          
  /*CONSULTA 9*/
+
 update prestamo p
    set
-   p.pagado = 'Sí'
+   p.pagado = 'SI'
  where p.id in (
    select p.id
      from prestamo p
@@ -136,82 +144,36 @@ update prestamo p
 );
 
  /*CONSULTA 10*/
- /*. Consulta del valor total de préstamos por año, mes y género femenino*/
-select extract(year from p.fecha) as ano,
-       extract(month from p.fecha) as mes,
-       sum(p.valor_otorgado) as femenino,
-       0 as masculino,
-       sum(p.valor_otorgado) as total
+ create view VISTA_10 as
+ select extract(year from fecha) anio,
+       extract(month from fecha) mes,
+       (
+          select count(*)
+            from prestamo pf
+            join deudor
+          on pf.iddeudor = deudor.id
+           where deudor.genero = 'F'
+             and extract(year from pf.fecha) = extract(year from p.fecha)
+             and extract(month from pf.fecha) = extract(month from p.fecha)
+           
+       ) femenino,
+       (
+          select count(*)
+            from prestamo pm
+            join deudor
+          on pm.iddeudor = deudor.id
+           where deudor.genero = 'M'
+             and extract(year from pm.fecha) = extract(year from p.fecha)
+             and extract(month from pm.fecha) = extract(month from p.fecha)
+           
+       ) masculino,
+       (
+          select count(*)
+            from prestamo pt
+           where extract(year from pt.fecha) = extract(year from p.fecha)
+             and extract(month from pt.fecha) = extract(month from p.fecha)
+           
+       ) total
   from prestamo p
-  join deudor d
-on p.iddeudor = d.id
- where d.genero = 'f'
- group by extract(year from p.fecha),
-          extract(month from p.fecha)
-union all
- 
- /* Consulta del valor total de préstamos por año, mes y género masculino*/
-select extract(year from p.fecha) as ano,
-       extract(month from p.fecha) as mes,
-       0 as femenino,
-       sum(p.valor_otorgado) as masculino,
-       sum(p.valor_otorgado) as total
-  from prestamo p
-  join deudor d
-on p.iddeudor = d.id
- where d.genero = 'm'
- group by extract(year from p.fecha),
-          extract(month from p.fecha)
-union all
- 
- /*Fila de totales generales  sin distinción de género)*/
-select null as ano,
-       null as mes,
-       sum(
-          case
-             when d.genero = 'f' then
-                p.valor_otorgado
-             else
-                0
-          end
-       ) as femenino,
-       sum(
-          case
-             when d.genero = 'm' then
-                p.valor_otorgado
-             else
-                0
-          end
-       ) as masculino,
-       sum(p.valor_otorgado) as total
-  from prestamo p
-  join deudor d
-on p.iddeudor = d.id
-intersect
- 
- /*quitar los préstamos con valor otorgado menor a 1000 */
-select extract(year from p.fecha) as ano,
-       extract(month from p.fecha) as mes,
-       sum(p.valor_otorgado) as femenino,
-       sum(p.valor_otorgado) as masculino,
-       sum(p.valor_otorgado) as total
-  from prestamo p
-  join deudor d
-on p.iddeudor = d.id
- where p.valor_otorgado > 1000
- group by extract(year from p.fecha),
-          extract(month from p.fecha)
-except all
- 
- /* Excluir préstamos totalmente pagados*/
-select extract(year from p.fecha) as ano,
-       extract(month from p.fecha) as mes,
-       sum(p.valor_otorgado) as femenino,
-       sum(p.valor_otorgado) as masculino,
-       sum(p.valor_otorgado) as total
-  from prestamo p
-  join deudor d
-on p.iddeudor = d.id
- where p.pagado = 'No'
- group by extract(year from p.fecha),
-          extract(month from p.fecha);
+  GROUP BY EXTRACT(YEAR FROM p.fecha), EXTRACT(MONTH FROM p.fecha)
+  order by EXTRACT(year from p.fecha), EXTRACT(Month from p.fecha);

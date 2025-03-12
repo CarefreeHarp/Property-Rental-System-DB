@@ -1,0 +1,16 @@
+/*Otorgamiento de permisos sobre las vistas*/
+grant select on VISTA_1 to JPALACIO;
+grant select on VISTA_2 to JPALACIO;
+grant select on VISTA_3 to JPALACIO;
+grant select on VISTA_4 to JPALACIO;
+grant select on VISTA_5 to JPALACIO;
+grant select on VISTA_6 to JPALACIO;
+grant select on VISTA_7 to JPALACIO;
+grant select on VISTA_8 to JPALACIO;
+--grant select on VISTA_9 to JPALACIO;
+grant select on VISTA_10 to JPALACIO;
+/*Otorgamiento de permisos sobre las tablas*/
+grant select on ABONO to JPALACIO;
+grant select on PRESTAMO to JPALACIO;
+grant select on BANCO to JPALACIO;
+grant select on DEUDOR to JPALACIO;

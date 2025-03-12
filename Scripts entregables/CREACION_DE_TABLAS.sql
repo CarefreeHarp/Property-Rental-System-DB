@@ -2,6 +2,7 @@ CREATE TABLE DEUDOR (
     id NUMBER(10,0) GENERATED ALWAYS AS IDENTITY,
     tipo_doc CHAR(2) NOT NULL CHECK(tipo_doc IN ('CC','CE','PP','TI')),-- CE: Cedula de extranjeria, PP: Pasaporte
     numero_doc VARCHAR2(20) NOT NULL,
+    nombre  VARCHAR2(50) NOT NULL, 
     genero CHAR(1) NOT NULL CHECK(genero IN ('M','F')),
 
     PRIMARY KEY (id),
