@@ -7,7 +7,7 @@ grant select on VISTA_5 to JPALACIO;
 grant select on VISTA_6 to JPALACIO;
 grant select on VISTA_7 to JPALACIO;
 grant select on VISTA_8 to JPALACIO;
---grant select on VISTA_9 to JPALACIO;
+grant select on VISTA_9 to JPALACIO;
 grant select on VISTA_10 to JPALACIO;
 /*Otorgamiento de permisos sobre las tablas*/
 grant select on ABONO to JPALACIO;

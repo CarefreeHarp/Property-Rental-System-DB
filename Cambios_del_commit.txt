@@ -35,6 +35,10 @@ Carpeta Scripts Entregables:
 -Los 4 scripts entregables están listos para ejecución en el usuario de cada integrante del grupo 
 -La consulta 9 sigue en proceso de revisión ya que no se puede establecer como una vista 
 
+Commit "Release" 
+
+Carpeta de Script Entregables:
+-Los 4 scripts entregables están totalmente listos para la ejecución en el usuario de cada integrante del grupo
 
 
 
